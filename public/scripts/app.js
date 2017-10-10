@@ -4,9 +4,20 @@ console.log("work");
 
 // JSX - JavaScript XML, poniżej jest kod w JSX jest to na styl scss->css więc musi użyc babel do skompilowania
 var book = {
-    title: "I am legend",
-    subtitle: "Jestem legendą"
+    title: React.createElement(
+        "p",
+        null,
+        "Some title from object."
+    ),
+    subtitle: "Some subtitle from object.",
+    options: ['One', 'Two']
 };
+
+function optional(subtitle) {
+    if (subtitle) {
+        return subtitle;
+    }
+}
 
 var tamplate = React.createElement(
     "div",
@@ -18,13 +29,12 @@ var tamplate = React.createElement(
         book.title,
         " "
     ),
-    React.createElement(
+    book.subtitle && React.createElement(
         "p",
         null,
-        " ",
-        book.subtitle,
-        " "
+        book.subtitle
     ),
+    book.options.length > 0 ? "Here are your options" : "No options",
     React.createElement(
         "ol",
         null,
@@ -79,4 +89,4 @@ var tamplateTwo = React.createElement(
 );
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(tamplateTwo, appRoot);
+ReactDOM.render(tamplate, appRoot);

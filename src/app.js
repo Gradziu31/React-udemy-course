@@ -2,14 +2,23 @@ console.log("work");
 
 // JSX - JavaScript XML, poniżej jest kod w JSX jest to na styl scss->css więc musi użyc babel do skompilowania
 var book = {
-    title: "I am legend",
-    subtitle: "Jestem legendą"
+    title: <p>Some title from object.</p>, 
+    subtitle: "Some subtitle from object.",
+    options: ['One', 'Two']
 };
 
-var tamplate = (
+function optional(subtitle){
+    if(subtitle){
+        return subtitle;
+    }
+}
+
+var tamplate = ( 
 <div>
 <h1> {book.title} </h1>
-<p> {book.subtitle} </p>
+{book.subtitle && <p>{book.subtitle}</p>}
+
+{(book.options.length > 0) ? "Here are your options" : "No options"}
 <ol>
     <li>Item one</li>
     <li>Item two</li>  
@@ -41,4 +50,4 @@ var tamplateTwo = (
 ); 
 var appRoot = document.getElementById("app");
  
-ReactDOM.render(tamplateTwo, appRoot);
+ReactDOM.render(tamplate, appRoot);
