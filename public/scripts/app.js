@@ -48,9 +48,14 @@ var user = {
     age: 23,
     location: "Polska"
 };
-var userName = 'Krystian';
-var userAge = 23;
-var userLocation = "Polska";
+
+function getLocation(location) {
+    if (location) {
+        return location;
+    } else {
+        return "Nie podano";
+    }
+}
 
 var tamplateTwo = React.createElement(
     "div",
@@ -70,7 +75,7 @@ var tamplateTwo = React.createElement(
         "p",
         null,
         "Location: ",
-        user.location
+        getLocation(user.location)
     )
 );
 var appRoot = document.getElementById("app");
