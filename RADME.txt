@@ -1,0 +1,41 @@
+﻿babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+live-server
+----------------
+instalowałem globalnie
+npm install -g live-server
+live-server -v 
+live-server 
+
+
+
+w projekcie globalnie zainstalowałem:
+yarn global add babel-cli@6.24.1
+to daje dostęp do babel --help (jak działa to znaczy że dobrze się zainstalowało)
+
+potem w projekcie indecision-app zrobiłem
+yarn init
+który utworzył mi package.json
+
+teraz w projekcie zrobiłem:
+yarn add babel-preset-react@6.24.1 babel-preset-env@1.5.2
+czyli ten pierwszy instaluje globalnie całego babla, a to wyżej instaluje mu pluginy do projektu od reakta i env to wszystkie ES żeby rozumiał wszystkie wersje i mój kompilować 
+od razu dopisał mi to do package.json, zrobił się też yarn.lock ale w nim nic nie mzianiam
+
+teraz wklepuję w konsole:
+babel src/app.js --out-file=public/scripts/app.js --presets=env,react
+co oznacza że babel ma skompilował src i zmiany zapisywać w skrypt.app.js oraz użyć do tego presetów które instalowałem wcześniej
+od razu po wklepaniu komendy kod z src/app.js przekompilował się do scripts/app.js
+
+kiedy dodam --watch
+babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+plik ten jest wtedy śledzony w tle
+
+teraz mogę otworzyć 2 terminal i odpalić w nim live-server
+
+
+-----------
+teraz ze swojego projektu mogę skasować node_modules
+i poleceniem yarn install 
+wszystkie potrzebne paczki powrócą
+
+
