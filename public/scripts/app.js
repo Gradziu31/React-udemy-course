@@ -69,7 +69,7 @@ var tamplateTwo = React.createElement(
         null,
         user.name ? user.name : "Brak nazwy uzytkownika"
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         "p",
         null,
         "Age: ",

@@ -34,11 +34,11 @@ function getLocation(location){
 //w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
 var tamplateTwo = (
     <div>
-        <h1>{user.name ? user.name : "Brak nazwy uzytkownika"}</h1> 
-        <p>Age: {user.age}</p>
+        <h1>{user.name ? user.name : "Brak nazwy uzytkownika"}</h1>  
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
         {getLocation(user.location)}
     </div>
-);
+); 
 var appRoot = document.getElementById("app");
  
 ReactDOM.render(tamplateTwo, appRoot);
