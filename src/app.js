@@ -1,19 +1,16 @@
-console.log("work");
+console.log("App.js is running!");
 
 // JSX - JavaScript XML, poniżej jest kod w JSX jest to na styl scss->css więc musi użyc babel do skompilowania
-var book = {
+
+// my own work
+
+const book = {
     title: <p>Some title from object.</p>, 
     subtitle: "Some subtitle from object.",
     options: ['One', 'Two']
 };
 
-function optional(subtitle){
-    if(subtitle){
-        return subtitle;
-    }
-}
-
-var tamplate = ( 
+const tamplate = ( 
 <div>
 <h1> {book.title} </h1>
 {book.subtitle && <p>{book.subtitle}</p>}
@@ -28,7 +25,7 @@ var tamplate = (
 
 // course
 
-var user = {
+const user = {
     name: "Krystian",
     age: 23,
     location: "Polska"
@@ -41,13 +38,13 @@ function getLocation(location){
 };
 
 //w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
-var tamplateTwo = (
+const tamplateTwo = (
     <div>
         <h1>{user.name ? user.name : "Brak nazwy uzytkownika"}</h1>  
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>} 
         {getLocation(user.location)}
     </div>
 ); 
-var appRoot = document.getElementById("app");
+const appRoot = document.getElementById("app");
  
 ReactDOM.render(tamplate, appRoot);

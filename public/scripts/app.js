@@ -1,8 +1,11 @@
 "use strict";
 
-console.log("work");
+console.log("App.js is running!");
 
 // JSX - JavaScript XML, poniżej jest kod w JSX jest to na styl scss->css więc musi użyc babel do skompilowania
+
+// my own work
+
 var book = {
     title: React.createElement(
         "p",
@@ -12,12 +15,6 @@ var book = {
     subtitle: "Some subtitle from object.",
     options: ['One', 'Two']
 };
-
-function optional(subtitle) {
-    if (subtitle) {
-        return subtitle;
-    }
-}
 
 var tamplate = React.createElement(
     "div",
