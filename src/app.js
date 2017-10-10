@@ -14,7 +14,7 @@ var tamplate = (
     <li>Item one</li>
     <li>Item two</li>  
 </ol> 
-</div>
+</div> 
 ); 
 
 // course
@@ -24,20 +24,19 @@ var user = {
     age: 23,
     location: "Polska"
 };
-
+// funkcja poniżej sprawdza czy lokalizacja istnieje jeśli tak zwraca ją, jeśli nie wypisuje string "Nie podano"
 function getLocation(location){
-    if(location){
-        return location;
-    } else {
-        return "Nie podano";
+    if(location){ 
+        return <p>Location: {location}</p>;
     }
-}
+};
 
+//w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
 var tamplateTwo = (
     <div>
         <h1>{user.name}</h1> 
-        <p>Age: {user.age}</p> 
-        <p>Location: {getLocation(user.location)}</p>
+        <p>Age: {user.age}</p>
+        {getLocation(user.location)}
     </div>
 );
 var appRoot = document.getElementById("app");

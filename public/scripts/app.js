@@ -48,15 +48,19 @@ var user = {
     age: 23,
     location: "Polska"
 };
-
+// funkcja poniżej sprawdza czy lokalizacja istnieje jeśli tak zwraca ją, jeśli nie wypisuje string "Nie podano"
 function getLocation(location) {
     if (location) {
-        return location;
-    } else {
-        return "Nie podano";
+        return React.createElement(
+            "p",
+            null,
+            "Location: ",
+            location
+        );
     }
-}
+};
 
+//w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
 var tamplateTwo = React.createElement(
     "div",
     null,
@@ -71,12 +75,7 @@ var tamplateTwo = React.createElement(
         "Age: ",
         user.age
     ),
-    React.createElement(
-        "p",
-        null,
-        "Location: ",
-        getLocation(user.location)
-    )
+    getLocation(user.location)
 );
 var appRoot = document.getElementById("app");
 
