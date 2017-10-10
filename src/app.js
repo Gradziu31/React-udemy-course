@@ -35,7 +35,7 @@ function getLocation(location){
 var tamplateTwo = (
     <div>
         <h1>{user.name ? user.name : "Brak nazwy uzytkownika"}</h1>  
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>} 
         {getLocation(user.location)}
     </div>
 ); 
