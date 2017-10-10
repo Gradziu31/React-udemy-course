@@ -67,7 +67,7 @@ var tamplateTwo = React.createElement(
     React.createElement(
         "h1",
         null,
-        user.name
+        user.name ? user.name : "Brak nazwy uzytkownika"
     ),
     React.createElement(
         "p",
