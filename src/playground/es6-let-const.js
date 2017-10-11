@@ -21,3 +21,15 @@ function getPenName(){
 
 const petName = getPenName()
 console.log(petName);
+
+
+
+
+// const nie da się nadpisac
+// let podobnie przyklady powyzej
+
+// w funkcji let i const uzyte dzialaja blokowo
+// function funkcja(){
+//     uzycie tutaj let lub const
+// }
+// nie zadziala tutaj.

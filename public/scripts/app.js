@@ -1,89 +1,28 @@
 "use strict";
 
-console.log("App.js is running!");
-
-// JSX - JavaScript XML, poniżej jest kod w JSX jest to na styl scss->css więc musi użyc babel do skompilowania
-
-// my own work
-
-var book = {
-    title: React.createElement(
-        "p",
-        null,
-        "Some title from object."
-    ),
-    subtitle: "Some subtitle from object.",
-    options: ['One', 'Two']
+var square = function square(x) {
+    return x * x;
 };
 
-var tamplate = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        " ",
-        book.title,
-        " "
-    ),
-    book.subtitle && React.createElement(
-        "p",
-        null,
-        book.subtitle
-    ),
-    book.options.length > 0 ? "Here are your options" : "No options",
-    React.createElement(
-        "ol",
-        null,
-        React.createElement(
-            "li",
-            null,
-            "Item one"
-        ),
-        React.createElement(
-            "li",
-            null,
-            "Item two"
-        )
-    )
-);
-
-// course
-
-var user = {
-    name: "Krystian",
-    age: 23,
-    location: "Polska"
-};
-// funkcja poniżej sprawdza czy lokalizacja istnieje jeśli tak zwraca ją, jeśli nie wypisuje string "Nie podano"
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            "p",
-            null,
-            "Location: ",
-            location
-        );
-    }
+var squareArrow = function squareArrow(x) {
+    return x * x;
 };
 
-//w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
-var tamplateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        user.name ? user.name : "Brak nazwy uzytkownika"
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    getLocation(user.location)
-);
-var appRoot = document.getElementById("app");
+console.log(square(8));
+console.log(squareArrow(8));
 
-ReactDOM.render(tamplate, appRoot);
+var squareArrowTwo = function squareArrowTwo(x) {
+    return x * x;
+};
+console.log(squareArrowTwo(8));
+
+//Challenge
+var getFirstName = function getFirstName(firstName) {
+    return firstName.split(' ')[0];
+};
+console.log(getFirstName("Adam Sandler"));
+
+var pierwsze = function pierwsze(tylkoimie) {
+    return tylkoimie.split(" ")[0];
+};
+console.log(pierwsze("Effy Stonem"));
