@@ -24,27 +24,19 @@ const tamplate = (
 ); 
 
 // course
-
-const user = {
-    name: "Krystian",
-    age: 23,
-    location: "Polska" 
+let count = 0;
+const addOne = () => {
+    console.log('addOne');
 };
-// funkcja poniżej sprawdza czy lokalizacja istnieje jeśli tak zwraca ją, jeśli nie wypisuje string "Nie podano"
-function getLocation(location){
-    if(location){ 
-        return <p>Location: {location}</p>;
-    }
-};
-
-//w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
 const tamplateTwo = (
     <div>
-        <h1>{user.name ? user.name : "Brak nazwy uzytkownika"}</h1>  
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>} 
-        {getLocation(user.location)}
+        <h1>Count: {count}</h1> 
+        <button onClick={() => {
+            console.log('inHere');
+            }}>+1</button>
     </div>
-); 
+);
+
 const appRoot = document.getElementById("app");
  
-ReactDOM.render(tamplate, appRoot);
+ReactDOM.render(tamplateTwo, appRoot);

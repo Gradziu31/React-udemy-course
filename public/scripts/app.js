@@ -49,41 +49,28 @@ var tamplate = React.createElement(
 );
 
 // course
-
-var user = {
-    name: "Krystian",
-    age: 23,
-    location: "Polska"
+var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
 };
-// funkcja poniżej sprawdza czy lokalizacja istnieje jeśli tak zwraca ją, jeśli nie wypisuje string "Nie podano"
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            "p",
-            null,
-            "Location: ",
-            location
-        );
-    }
-};
-
-//w tej zmiennej użyta jest wlasnie funkcja od lokalizacji przekazuje lokalizację do funkcji a funkcja zwraca warunek ktory chcielismy
 var tamplateTwo = React.createElement(
     "div",
     null,
     React.createElement(
         "h1",
         null,
-        user.name ? user.name : "Brak nazwy uzytkownika"
+        "Count: ",
+        count
     ),
-    user.age && user.age >= 18 && React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    getLocation(user.location)
+    React.createElement(
+        "button",
+        { onClick: function onClick() {
+                console.log('inHere');
+            } },
+        "+1"
+    )
 );
+
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(tamplate, appRoot);
+ReactDOM.render(tamplateTwo, appRoot);
