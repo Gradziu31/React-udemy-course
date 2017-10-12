@@ -11,7 +11,7 @@ const book = {
 };
 
 const tamplate = ( 
-<div>
+<div> 
 <h1> {book.title} </h1>
 {book.subtitle && <p>{book.subtitle}</p>}
 
@@ -28,7 +28,7 @@ const tamplate = (
 const user = {
     name: "Krystian",
     age: 23,
-    location: "Polska"
+    location: "Polska" 
 };
 // funkcja poniżej sprawdza czy lokalizacja istnieje jeśli tak zwraca ją, jeśli nie wypisuje string "Nie podano"
 function getLocation(location){
