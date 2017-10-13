@@ -44,7 +44,7 @@ const appRoot = document.getElementById("app");
 const renderCounterApp = () => {
     const tamplateTwo = (
         <div>
-            <h1>Count: {count}</h1>  
+            <h1>Count: {count}</h1>   
             <button onClick={addOne}>+1</button>
             <button onClick={minusOne}>-1</button>
             <button onClick={reset}>reset</button>
@@ -53,3 +53,4 @@ const renderCounterApp = () => {
     ReactDOM.render(tamplateTwo, appRoot);
 };
 renderCounterApp();
+ 
