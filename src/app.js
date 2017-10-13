@@ -26,17 +26,30 @@ const tamplate = (
 // course
 let count = 0;
 const addOne = () => {
-    console.log('addOne');
+    count++;
+    renderCounterApp();
+}; 
+const minusOne = () => {
+    count--;
+    renderCounterApp();
 };
-const tamplateTwo = (
-    <div>
-        <h1>Count: {count}</h1> 
-        <button onClick={() => {
-            console.log('inHere');
-            }}>+1</button>
-    </div>
-);
+const reset = () => {
+    count = 0;
+    renderCounterApp();
+};
+
+
 
 const appRoot = document.getElementById("app");
- 
-ReactDOM.render(tamplateTwo, appRoot);
+const renderCounterApp = () => {
+    const tamplateTwo = (
+        <div>
+            <h1>Count: {count}</h1>  
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>reset</button>
+        </div>
+    );
+    ReactDOM.render(tamplateTwo, appRoot);
+};
+renderCounterApp();

@@ -51,26 +51,45 @@ var tamplate = React.createElement(
 // course
 var count = 0;
 var addOne = function addOne() {
-    console.log('addOne');
+    count++;
+    renderCounterApp();
 };
-var tamplateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Count: ",
-        count
-    ),
-    React.createElement(
-        "button",
-        { onClick: function onClick() {
-                console.log('inHere');
-            } },
-        "+1"
-    )
-);
+var minusOne = function minusOne() {
+    count--;
+    renderCounterApp();
+};
+var reset = function reset() {
+    count = 0;
+    renderCounterApp();
+};
 
 var appRoot = document.getElementById("app");
-
-ReactDOM.render(tamplateTwo, appRoot);
+var renderCounterApp = function renderCounterApp() {
+    var tamplateTwo = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            "Count: ",
+            count
+        ),
+        React.createElement(
+            "button",
+            { onClick: addOne },
+            "+1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: minusOne },
+            "-1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: reset },
+            "reset"
+        )
+    );
+    ReactDOM.render(tamplateTwo, appRoot);
+};
+renderCounterApp();
