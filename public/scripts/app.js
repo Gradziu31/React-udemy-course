@@ -13,83 +13,81 @@ var book = {
         "Some title from object."
     ),
     subtitle: "Some subtitle from object.",
-    options: ['One', 'Two']
+    options: ["siemka", "dwa"]
 };
 
-var tamplate = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        " ",
-        book.title,
-        " "
-    ),
-    book.subtitle && React.createElement(
-        "p",
-        null,
-        book.subtitle
-    ),
-    book.options.length > 0 ? "Here are your options" : "No options",
-    React.createElement(
-        "ol",
-        null,
-        React.createElement(
-            "li",
-            null,
-            "Item one"
-        ),
-        React.createElement(
-            "li",
-            null,
-            "Item two"
-        )
-    )
-);
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
 
-// course
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    renderCounterApp();
+    var option = e.target.elements.option.value;
+
+    if (option) {
+        book.options.push(option);
+        e.target.elements.option.value = "";
+        render();
+    };
 };
-var minusOne = function minusOne() {
-    count--;
-    renderCounterApp();
-};
-var reset = function reset() {
-    count = 0;
-    renderCounterApp();
+
+var onRemoveAll = function onRemoveAll() {
+    book.options = [];
+    render();
 };
 
 var appRoot = document.getElementById("app");
-var renderCounterApp = function renderCounterApp() {
-    var tamplateTwo = React.createElement(
+
+var render = function render() {
+    var tamplate = React.createElement(
         "div",
         null,
         React.createElement(
             "h1",
             null,
-            "Count: ",
-            count
+            " ",
+            book.title,
+            " "
+        ),
+        book.subtitle && React.createElement(
+            "p",
+            null,
+            book.subtitle
+        ),
+        React.createElement(
+            "p",
+            null,
+            book.options.length > 0 ? "Here are your options" : "No options"
+        ),
+        React.createElement(
+            "p",
+            null,
+            book.options.length
         ),
         React.createElement(
             "button",
-            { onClick: addOne },
-            "+1"
+            { onClick: onRemoveAll },
+            "Remove All"
         ),
         React.createElement(
-            "button",
-            { onClick: minusOne },
-            "-1"
+            "ol",
+            null,
+            book.options.map(function (e) {
+                return React.createElement(
+                    "li",
+                    null,
+                    e
+                );
+            })
         ),
         React.createElement(
-            "button",
-            { onClick: reset },
-            "reset"
+            "form",
+            { onSubmit: onFormSubmit },
+            React.createElement("input", { type: "text", name: "option" }),
+            React.createElement(
+                "button",
+                null,
+                "Add option"
+            )
         )
     );
-    ReactDOM.render(tamplateTwo, appRoot);
+    ReactDOM.render(tamplate, appRoot);
 };
-renderCounterApp();
+render();

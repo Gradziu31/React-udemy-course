@@ -7,50 +7,51 @@ console.log("App.js is running!");
 const book = {
     title: <p>Some title from object.</p>, 
     subtitle: "Some subtitle from object.",
-    options: ['One', 'Two']
+    options: ["siemka", "dwa"]
 };
 
-const tamplate = ( 
-<div> 
-<h1> {book.title} </h1>
-{book.subtitle && <p>{book.subtitle}</p>}
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    
+    const option = e.target.elements.option.value;
 
-{(book.options.length > 0) ? "Here are your options" : "No options"}
-<ol>
-    <li>Item one</li>
-    <li>Item two</li>  
-</ol> 
-</div> 
-); 
-
-// course
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounterApp();
-}; 
-const minusOne = () => {
-    count--;
-    renderCounterApp();
-};
-const reset = () => {
-    count = 0;
-    renderCounterApp();
+    if (option) {
+        book.options.push(option);
+        e.target.elements.option.value = "";
+        render();
+    };
 };
 
-
+const onRemoveAll = () => {
+    book.options = [];
+    render();
+};
 
 const appRoot = document.getElementById("app");
-const renderCounterApp = () => {
-    const tamplateTwo = (
-        <div>
-            <h1>Count: {count}</h1>   
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>reset</button>
-        </div>
-    );
-    ReactDOM.render(tamplateTwo, appRoot);
+
+const render = () => {
+    const tamplate = (
+        <div> 
+        <h1> {book.title} </h1>
+        {book.subtitle && <p>{book.subtitle}</p>}
+        <p>{book.options.length > 0 ? "Here are your options" : "No options"}</p>
+        <p>{book.options.length}</p>
+        <button onClick={onRemoveAll}>Remove All</button>
+        {
+            <ol>
+                {
+                book.options.map((e) => {
+                    return <li>{e}</li>;
+                })
+                }
+            </ol>
+        }
+        <form onSubmit={onFormSubmit}>
+            <input type="text" name="option"/>
+            <button>Add option</button>
+        </form>
+        </div> 
+        ); 
+        ReactDOM.render(tamplate, appRoot)
 };
-renderCounterApp();
- 
+render();
