@@ -7,7 +7,7 @@ console.log("App.js is running!");
 const book = {
     title: <p>Some title from object.</p>, 
     subtitle: "Some subtitle from object.",
-    options: ["siemka", "dwa"]
+    options: []
 };
 
 const onFormSubmit = (e) => {
@@ -27,6 +27,11 @@ const onRemoveAll = () => {
     render();
 };
 
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random()*book.options.length);
+    alert(book.options[randomNum]);
+};
+
 const appRoot = document.getElementById("app");
 
 const render = () => {
@@ -35,7 +40,7 @@ const render = () => {
         <h1> {book.title} </h1>
         {book.subtitle && <p>{book.subtitle}</p>}
         <p>{book.options.length > 0 ? "Here are your options" : "No options"}</p>
-        <p>{book.options.length}</p>
+        <button disabled={book.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
         <button onClick={onRemoveAll}>Remove All</button>
         {
             <ol>

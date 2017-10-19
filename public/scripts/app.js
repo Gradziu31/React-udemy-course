@@ -13,7 +13,7 @@ var book = {
         "Some title from object."
     ),
     subtitle: "Some subtitle from object.",
-    options: ["siemka", "dwa"]
+    options: []
 };
 
 var onFormSubmit = function onFormSubmit(e) {
@@ -31,6 +31,11 @@ var onFormSubmit = function onFormSubmit(e) {
 var onRemoveAll = function onRemoveAll() {
     book.options = [];
     render();
+};
+
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * book.options.length);
+    alert(book.options[randomNum]);
 };
 
 var appRoot = document.getElementById("app");
@@ -57,9 +62,9 @@ var render = function render() {
             book.options.length > 0 ? "Here are your options" : "No options"
         ),
         React.createElement(
-            "p",
-            null,
-            book.options.length
+            "button",
+            { disabled: book.options.length === 0, onClick: onMakeDecision },
+            "What should I do?"
         ),
         React.createElement(
             "button",
