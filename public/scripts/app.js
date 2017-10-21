@@ -1,32 +1,43 @@
-"use strict";
+'use strict';
 
-var visibility = false;
-var toggle = function toggle() {
-    visibility = !visibility;
-    render();
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var app = document.getElementById("app");
-var render = function render() {
-    var jsx = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            "Visibility Toggle"
-        ),
-        React.createElement(
-            "button",
-            { onClick: toggle },
-            visibility ? "Hide details" : "Show details"
-        ),
-        visibility && React.createElement(
-            "p",
-            null,
-            "Praesent facilisis sem enim, eget vulputate leo mollis fringilla. Vestibulum commodo eleifend massa, et fermentum nunc pulvinar ut."
-        )
-    );
-    ReactDOM.render(jsx, app);
-};
-render();
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Person = function () {
+    //po = ustawiam domyslna wartosc czyli jesli brakuje np. age to wpisze tam 0
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+        _classCallCheck(this, Person);
+
+        this.name = name;
+        this.age = age;
+    }
+
+    _createClass(Person, [{
+        key: 'getGretting',
+        value: function getGretting() {
+            //ważne aby to zadzialalo musze tyldą zrobic znaki ``
+            return 'Hi. I am ' + this.name;
+            //oznacza to samo co 
+            // return 'Hi. i am' + this.name + '!';
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' year(s) old!';
+        }
+    }]);
+
+    return Person;
+}();
+
+var me = new Person('Krystian Gradek', 24);
+console.log(me.getGretting());
+console.log(me.getDescription());
+
+var other = new Person();
+console.log(other.getGretting());
+console.log(other.getDescription());
