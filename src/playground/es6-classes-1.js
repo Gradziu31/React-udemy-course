@@ -14,9 +14,13 @@ class Person {
         return `${this.name} is ${this.age} year(s) old!`
     }
 }
+// extends pobiera wszystko co posiada inna klasa (tak jak by skopiowac wszystko z gory i wkleic tutaj do klasy Student)
+class Student extends Person {
 
-const me = new Person('Krystian Gradek', 24);
+}
+
+const me = new Student('Krystian Gradek', 24, );
 console.log(`${me.getGretting()}, ${me.getDescription()}`);
 
-const other = new Person();
+const other = new Student();
 console.log(`${other.getGretting()}, ${other.getDescription()}`);
