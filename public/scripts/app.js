@@ -84,30 +84,23 @@ var Traveler = function (_Person2) {
     _inherits(Traveler, _Person2);
 
     // przekazuję najpierw to co bylo w person przez super dopiero potem dopisuje wlanse z tej klasy
-    function Traveler(name, age, major, location) {
+    function Traveler(name, age, location) {
         _classCallCheck(this, Traveler);
 
-        var _this2 = _possibleConstructorReturn(this, (Traveler.__proto__ || Object.getPrototypeOf(Traveler)).call(this, name, age, major));
+        var _this2 = _possibleConstructorReturn(this, (Traveler.__proto__ || Object.getPrototypeOf(Traveler)).call(this, name, age));
 
         _this2.location = location;
         return _this2;
     }
-    // to zwraca odwrotnosc jesli nie ma lokalizacji false ale 2x !! zwraca true
+    //w tej funckji tworze zmienna ktora przkazuje sobie oryginal z tej samej funkcji tylko ze z Person
 
 
     _createClass(Traveler, [{
-        key: 'hasLocation',
-        value: function hasLocation() {
-            return !!this.location;
-        }
-        //w tej funckji tworze zmienna ktora przkazuje sobie oryginal z tej samej funkcji tylko ze z Person
-
-    }, {
         key: 'getGretting',
         value: function getGretting() {
             var Greeting = _get(Traveler.prototype.__proto__ || Object.getPrototypeOf(Traveler.prototype), 'getGretting', this).call(this);
             // i jeśli istnieje lokalizacja wypisuje tresc z pierwszej funkcji czyli Witam jestem Krystian + dopisuje do tego lokalizacje
-            if (this.hasLocation()) {
+            if (this.location) {
                 Greeting += ' I\'m visiting from ' + this.location;
             }
             //oczywiście musi zwrocic calą tą funkcję
@@ -120,7 +113,7 @@ var Traveler = function (_Person2) {
 //sprawdzam tworzac nowego Traveler bo przez niego sprawdzam lokalizację w innym wypadku nie mial by jak sprawdzic lokalizacji bo w Person jej nie ma
 
 
-var me = new Traveler('Krystian Gradek', 24, 'Computer Science', "London");
+var me = new Traveler('Krystian Gradek', 24, "London");
 console.log(me.getGretting());
 var other = new Traveler();
 console.log(other.getGretting());
