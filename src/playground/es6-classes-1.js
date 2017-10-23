@@ -16,11 +16,50 @@ class Person {
 }
 // extends pobiera wszystko co posiada inna klasa (tak jak by skopiowac wszystko z gory i wkleic tutaj do klasy Student)
 class Student extends Person {
+    constructor(name, age, major){
+        //muszę tutaj skorzystac z super aby moc dopisac swoje wlasne 
+        super(name, age);
+        this.major = major;
+    }
+    hasMajor(){
+        return !!this.major;
+    }
+    getDescription(){
+        let description = super.getDescription();
 
+        if(this.hasMajor()){
+            description += ` Their major is ${this.major}`;
+        }
+
+        return description;
+    }
 }
 
-const me = new Student('Krystian Gradek', 24, );
-console.log(`${me.getGretting()}, ${me.getDescription()}`);
 
-const other = new Student();
-console.log(`${other.getGretting()}, ${other.getDescription()}`);
+// Zadanie zlecone na lekcji
+class Traveler extends Person {
+    // przekazuję najpierw to co bylo w person przez super dopiero potem dopisuje wlanse z tej klasy
+    constructor(name,age,major,location){
+        super(name,age,major);
+        this.location = location;
+    }
+    // to zwraca odwrotnosc jesli nie ma lokalizacji false ale 2x !! zwraca true
+    hasLocation(){
+        return !!this.location;
+    }
+    //w tej funckji tworze zmienna ktora przkazuje sobie oryginal z tej samej funkcji tylko ze z Person
+    getGretting(){
+        let Greeting = super.getGretting();
+        // i jeśli istnieje lokalizacja wypisuje tresc z pierwszej funkcji czyli Witam jestem Krystian + dopisuje do tego lokalizacje
+        if(this.hasLocation()){
+            Greeting += ` I'm visiting from ${this.location}`;
+        }
+        //oczywiście musi zwrocic calą tą funkcję
+        return Greeting;
+    }
+}
+ //sprawdzam tworzac nowego Traveler bo przez niego sprawdzam lokalizację w innym wypadku nie mial by jak sprawdzic lokalizacji bo w Person jej nie ma
+const me = new Traveler('Krystian Gradek', 24, 'Computer Science', "London");
+console.log(me.getGretting());
+const other = new Traveler();
+console.log(other.getGretting()); 
