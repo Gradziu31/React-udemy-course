@@ -16,9 +16,7 @@ class Person {
 }
 
 const me = new Person('Krystian Gradek', 24);
-console.log(me.getGretting());
-console.log(me.getDescription());
+console.log(`${me.getGretting()}, ${me.getDescription()}`);
 
 const other = new Person();
-console.log(other.getGretting()); 
-console.log(other.getDescription());
+console.log(`${other.getGretting()}, ${other.getDescription()}`);
