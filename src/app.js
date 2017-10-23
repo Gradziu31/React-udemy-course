@@ -1,62 +1,51 @@
-console.log("App.js is running!");
+class Header extends React.Component{
+    render(){
+        return(
+            <div>
+                <h1>Indecision</h1>
+                <h2>Put your life in the hands of a computer</h2>
+            </div> 
+        )
+    }
+}
 
-// JSX - JavaScript XML, poniżej jest kod w JSX jest to na styl scss->css więc musi użyc babel do skompilowania
+class Action extends React.Component{
+    render(){
+        return (
+            <div>
+                <button>What should I do?</button>
+            </div>
+        );
+    }
+}
 
-// my own work
+class Options extends React.Component{
+    render(){
+        return (
+            <div>
+                <h1>Options component here</h1>
+            </div>
+        );
+    }
+}
 
-const book = {
-    title: <p>Some title from object.</p>, 
-    subtitle: "Some subtitle from object.",
-    options: []
-};
+class AddOption extends React.Component{
+    render(){
+        return(
+            <div>
+                <h1>AddOptions component here</h1>
+            </div>
+        );
+    }
+}
 
-const onFormSubmit = (e) => {
-    e.preventDefault();
-    
-    const option = e.target.elements.option.value;
+const jsx = (
+    <div>
+        <Header />
+        <Action />
+        <Options />
+        <AddOption />
+    </div>
+);
 
-    if (option) {
-        book.options.push(option);
-        e.target.elements.option.value = "";
-        render();
-    };
-};
-
-const onRemoveAll = () => {
-    book.options = [];
-    render();
-};
-
-const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random()*book.options.length);
-    alert(book.options[randomNum]);
-};
-
-const appRoot = document.getElementById("app");
-
-const render = () => {
-    const tamplate = (
-        <div> 
-        <h1> {book.title} </h1>
-        {book.subtitle && <p>{book.subtitle}</p>}
-        <p>{book.options.length > 0 ? "Here are your options" : "No options"}</p>
-        <button disabled={book.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
-        <button onClick={onRemoveAll}>Remove All</button>
-        {
-            <ol>
-                {
-                book.options.map((e) => {
-                    return <li>{e}</li>;
-                })
-                }
-            </ol>
-        }
-        <form onSubmit={onFormSubmit}>
-            <input type="text" name="option"/>
-            <button>Add option</button>
-        </form>
-        </div> 
-        ); 
-        ReactDOM.render(tamplate, appRoot)
-};
-render();
+ReactDOM.render(jsx,document.getElementById("app"))
