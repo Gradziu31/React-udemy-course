@@ -9,7 +9,6 @@ class Counter extends React.Component{
         };
     }
     handleAddOne(){
-        //setState automatycznie wyrenderuje nowe dane w nim zrobilem funkcje w jej paramtrze przekazuje stary numer count i albo dodaje albo odejmuje
         this.setState((prevState) => {
             return{
                 count: prevState.count + 1
@@ -24,11 +23,24 @@ class Counter extends React.Component{
         });
     }
     handleReset(){
+        // w tym przypadku moge normalnie to zrobic bo od razu podmieni mi wartosc i prevState zwraca ostatnia czyli 0 a nie np. 15
         this.setState(() => {
             return{
                 count: 0
             };
         });
+        this.setState((prevState) => {
+            return{
+                count: prevState.count+1
+            };
+        });
+        //drugi nowszy sposob jednak preferowany jest ten pierwszy - tutaj jesli zrobie 2 takie funkcje to nie dziala to poprawnie bo nie zdazy wyzerowac a juz dodaje do starej wartosci
+        // this.setState({
+        //     count: 0
+        // });
+        // this.setState({
+        //     count: this.state.count + 1
+        // });
     }
     render(){
         return(
@@ -41,8 +53,6 @@ class Counter extends React.Component{
         )
     }
 }
-
-
 
 ReactDOM.render(<Counter />, document.getElementById("app"))
 
