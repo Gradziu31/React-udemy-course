@@ -29,11 +29,6 @@ class Counter extends React.Component{
                 count: 0
             };
         });
-        this.setState((prevState) => {
-            return{
-                count: prevState.count+1
-            };
-        });
         //drugi nowszy sposob jednak preferowany jest ten pierwszy - tutaj jesli zrobie 2 takie funkcje to nie dziala to poprawnie bo nie zdazy wyzerowac a juz dodaje do starej wartosci
         // this.setState({
         //     count: 0
